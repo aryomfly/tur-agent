@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Требования виз - Go&Fly</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">✈️ Go&Fly</div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../index.html">Главная</a></li>
+                    <li><a href="bron.html">Бронирование</a></li>
+                    <li><a href="visas.html">Визы</a></li>
+                    <li><a href="insurance.html">Страхование</a></li>
+                    <li><a href="memo.html">Памятка</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeToggle">🌙</button>
+        </div>
+    </header>
+
+    <div class="visa-container">
+        <a href="../index.html" class="back-btn">← На главную</a>
+
+        <div class="visa-header">
+            <h1>Требования виз</h1>
+            <p>Необходимая информация для международных путешествий</p>
+        </div>
+
+        <div class="visa-grid">
+            <!-- Франция -->
+            <div class="visa-card">
+                <div class="visa-flag">🇫🇷</div>
+                <h3>Франция (Шенген)</h3>
+                <ul class="visa-details">
+                    <li><strong>Тип:</strong> Виза Шенген</li>
+                    <li><strong>Длительность:</strong> 90 дней в течение 180 дней</li>
+                    <li><strong>Обработка:</strong> 15 рабочих дней</li>
+                    <li><strong>Стоимость:</strong> €80 (€40 для детей)</li>
+                    <li><strong>Требования:</strong> Паспорт, фото, страховка</li>
+                </ul>
+                <span class="processing-time">⏱️ 2-3 недели</span>
+            </div>
+
+            <!-- ОАЭ -->
+            <div class="visa-card">
+                <div class="visa-flag">🇦🇪</div>
+                <h3>ОАЭ (Дубай)</h3>
+                <ul class="visa-details">
+                    <li><strong>Тип:</strong> Туристическая виза</li>
+                    <li><strong>Длительность:</strong> 30 дней</li>
+                    <li><strong>Обработка:</strong> 1-3 дня (онлайн)</li>
+                    <li><strong>Стоимость:</strong> ~$50-80</li>
+                    <li><strong>Требования:</strong> Паспорт, бронь отеля</li>
+                </ul>
+                <span class="processing-time">⏱️ 1-3 дня</span>
+            </div>
+
+            <!-- Индонезия -->
+            <div class="visa-card">
+                <div class="visa-flag">🇮🇩</div>
+                <h3>Индонезия (Бали)</h3>
+                <ul class="visa-details">
+                    <li><strong>Тип:</strong> Виза по прилёту</li>
+                    <li><strong>Длительность:</strong> 30 дней</li>
+                    <li><strong>Обработка:</strong> В день прилёта в аэропорту</li>
+                    <li><strong>Стоимость:</strong> $35 USD</li>
+                    <li><strong>Требования:</strong> Паспорт, обратный билет</li>
+                </ul>
+                <span class="processing-time">⏱️ Мгновенно</span>
+            </div>
+
+            <!-- Шенген -->
+            <div class="visa-card">
+                <div class="visa-flag">🛂</div>
+                <h3>Зона Шенген</h3>
+                <ul class="visa-details">
+                    <li><strong>Охват:</strong> 27 стран</li>
+                    <li><strong>Длительность:</strong> Действительна 5 лет</li>
+                    <li><strong>Множественная виза:</strong> Доступна</li>
+                    <li><strong>Страховка:</strong> Минимум €30,000</li>
+                    <li><strong>Действие:</strong> Полная зона</li>
+                </ul>
+                <span class="processing-time">ℹ️ Самая популярная</span>
+            </div>
+
+            <!-- Великобритания -->
+            <div class="visa-card">
+                <div class="visa-flag">🇬🇧</div>
+                <h3>Великобритания</h3>
+                <ul class="visa-details">
+                    <li><strong>Тип:</strong> Виза посетителя</li>
+                    <li><strong>Длительность:</strong> 6 месяцев</li>
+                    <li><strong>Обработка:</strong> 3 недели (стандартно)</li>
+                    <li><strong>Стоимость:</strong> £100</li>
+                    <li><strong>Требования:</strong> Доказательство средств, маршрут</li>
+                </ul>
+                <span class="processing-time">⏱️ 2-4 недели</span>
+            </div>
+
+            <!-- Ускоренная обработка -->
+            <div class="visa-card">
+                <div class="visa-flag">⚡</div>
+                <h3>Ускоренная обработка</h3>
+                <ul class="visa-details">
+                    <li><strong>Тип:</strong> Приоритетная услуга</li>
+                    <li><strong>Длительность:</strong> 5 рабочих дней</li>
+                    <li><strong>Обработка:</strong> Приоритетное рассмотрение</li>
+                    <li><strong>Стоимость:</strong> +50% от стандартной</li>
+                    <li><strong>Доступность:</strong> Большинство стран</li>
+                </ul>
+                <span class="processing-time">⏱️ 5 дней</span>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h4>📋 Общий чек-лист документов</h4>
+            <ul>
+                <li>✓ Действительный паспорт (минимум 6 месяцев действительности)</li>
+                <li>✓ Страховка (€30,000 минимум для Шенгена)</li>
+                <li>✓ Подтверждение бронирования отеля</li>
+                <li>✓ Обратные авиабилеты</li>
+                <li>✓ Доказательство финансовых средств</li>
+                <li>✓ Заполненная анкета на визу</li>
+                <li>✓ Фотографии паспортного размера (2-4)</li>
+                <li>✓ Письмо с работы или деловые документы</li>
+                <li>✓ Выписки со счета (последние 3 месяца)</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h4>💡 Советы по визам</h4>
+            <p>
+                Подавайте документы на визу минимум за 2-3 месяца до поездки. Для стран Шенгена 
+                подавайте в консульство страны, где вы проведете больше всего времени. Проверяйте 
+                требования на сайтах посольств, так как они могут меняться. Храните копии всех 
+                поданных документов.
+            </p>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

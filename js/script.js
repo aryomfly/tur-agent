@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // ===== CAPTCHA VERIFICATION =====
+    initCaptcha();
+
+    // ===== МОБИЛЬНОЕ МЕНЮ =====
+    initMobileMenu();
+
     // ИНИЦИАЛИЗАЦИЯ ТЕМЫ
     initTheme();
 
@@ -228,4 +234,105 @@ if (flightForm) {
             result.style.display = 'none';
         }, 3000);
     };
+}
+
+// ===== CAPTCHA VERIFICATION FUNCTION =====
+function initCaptcha() {
+    const captchaModal = document.getElementById('captchaModal');
+    const captchaCheckbox = document.getElementById('captchaCheckbox');
+    const captchaSubmit = document.getElementById('captchaSubmit');
+    
+    // Проверяем был ли пользователь уже верифицирован
+    if (localStorage.getItem('captchaVerified') === 'true') {
+        captchaModal.style.display = 'none';
+        return;
+    }
+    
+    // Обработчик чекбокса
+    captchaCheckbox.addEventListener('change', (e) => {
+        captchaSubmit.disabled = !e.target.checked;
+    });
+    
+    // Обработчик кнопки "Продолжить"
+    captchaSubmit.addEventListener('click', () => {
+        if (captchaCheckbox.checked) {
+            // Имитация проверки CAPTCHA (в реальности используется reCAPTCHA)
+            captchaSubmit.disabled = true;
+            captchaSubmit.textContent = 'Проверка...';
+            
+            // Имитируем задержку проверки
+            setTimeout(() => {
+                localStorage.setItem('captchaVerified', 'true');
+                captchaModal.style.display = 'none';
+                captchaCheckbox.checked = false;
+                captchaSubmit.disabled = false;
+                captchaSubmit.textContent = 'Продолжить';
+            }, 800);
+        }
+    });
+    
+    // Запрет закрытия модали кликом вне
+    captchaModal.addEventListener('click', (e) => {
+        if (e.target === captchaModal) {
+            e.preventDefault();
+        }
+    });
+}
+
+// ===== MOBILE MENU FUNCTION =====
+function initMobileMenu() {
+    // Создаем кнопку меню если её нет
+    const header = document.querySelector('.header-container');
+    const nav = document.querySelector('nav');
+    
+    if (!document.getElementById('mobileMenuBtn')) {
+        const menuBtn = document.createElement('button');
+        menuBtn.id = 'mobileMenuBtn';
+        menuBtn.className = 'mobile-menu-btn';
+        menuBtn.innerHTML = '☰';
+        menuBtn.setAttribute('aria-label', 'Toggle menu');
+        header.appendChild(menuBtn);
+        
+        // Обработчик клика
+        menuBtn.addEventListener('click', () => {
+            const navList = document.querySelector('.nav-list');
+            navList.classList.toggle('active');
+            menuBtn.classList.toggle('active');
+        });
+    }
+    
+    // Закрываем меню при клике на ссылку
+    const navLinks = document.querySelectorAll('.nav-list a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const navList = document.querySelector('.nav-list');
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            navList.classList.remove('active');
+            menuBtn.classList.remove('active');
+        });
+    });
+    
+    // Обработчик dropdown меню
+    const dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(dropdown => {
+        const dropbtn = dropdown.querySelector('.dropbtn');
+        const dropContent = dropdown.querySelector('.dropdown-content');
+        
+        if (dropbtn) {
+            dropbtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                dropContent.classList.toggle('show');
+            });
+        }
+    });
+    
+    // Закрыть dropdown при клике вне
+    document.addEventListener('click', (e) => {
+        dropdowns.forEach(dropdown => {
+            const dropContent = dropdown.querySelector('.dropdown-content');
+            if (!dropdown.contains(e.target) && dropContent) {
+                dropContent.classList.remove('show');
+            }
+        });
+    });
 }

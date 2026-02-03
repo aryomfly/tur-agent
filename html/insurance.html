@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страхование путешествий - Go&Fly</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">✈️ Go&Fly</div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../index.html">Главная</a></li>
+                    <li><a href="bron.html">Бронирование</a></li>
+                    <li><a href="visas.html">Визы</a></li>
+                    <li><a href="insurance.html">Страхование</a></li>
+                    <li><a href="memo.html">Памятка</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeToggle">🌙</button>
+        </div>
+    </header>
+
+    <div class="insurance-container">
+        <a href="../index.html" class="back-btn">← На главную</a>
+
+        <div class="insurance-header">
+            <h1>Страховые планы путешествий</h1>
+            <p>Полное покрытие для безопасного путешествия</p>
+        </div>
+
+        <div class="insurance-grid">
+            <!-- Базовый план -->
+            <div class="insurance-plan">
+                <div class="plan-header">
+                    <h3>Базовый</h3>
+                    <div class="plan-price">$29<span>за поездку</span></div>
+                </div>
+                <div class="plan-content">
+                    <ul class="coverage-list">
+                        <li>Медицинские расходы: $50,000</li>
+                        <li>Экстренная эвакуация</li>
+                        <li>Страховка багажа</li>
+                        <li>Задержка рейса: $100</li>
+                        <li>Поддержка 24/7</li>
+                        <li>До 15 дней покрытия</li>
+                    </ul>
+                    <button class="plan-btn">Выбрать план</button>
+                </div>
+            </div>
+
+            <!-- Стандартный план (популярный) -->
+            <div class="insurance-plan">
+                <div class="popular-badge">САМЫЙ ПОПУЛЯРНЫЙ</div>
+                <div class="plan-header" style="background: linear-gradient(135deg, #28a745, #1e7e34);">
+                    <h3>Стандартный</h3>
+                    <div class="plan-price">$59<span>за поездку</span></div>
+                </div>
+                <div class="plan-content">
+                    <ul class="coverage-list">
+                        <li>Медицинские расходы: $100,000</li>
+                        <li>Экстренная эвакуация + транспорт</li>
+                        <li>Страховка багажа: $2,500</li>
+                        <li>Задержка рейса: $300</li>
+                        <li>Отмена рейса: $1,000</li>
+                        <li>Поддержка 24/7 на разных языках</li>
+                        <li>До 45 дней покрытия</li>
+                    </ul>
+                    <button class="plan-btn" style="background: #28a745;">Выбрать план</button>
+                </div>
+            </div>
+
+            <!-- Премиум план -->
+            <div class="insurance-plan">
+                <div class="plan-header" style="background: linear-gradient(135deg, #ffc107, #ff9800);">
+                    <h3>Премиум</h3>
+                    <div class="plan-price">$99<span>за поездку</span></div>
+                </div>
+                <div class="plan-content">
+                    <ul class="coverage-list">
+                        <li>Медицинские расходы: $250,000</li>
+                        <li>Экстренная эвакуация + авиатранспорт</li>
+                        <li>Страховка багажа: $5,000</li>
+                        <li>Задержка рейса: $500</li>
+                        <li>Отмена рейса: $2,500</li>
+                        <li>Помощь при потере паспорта</li>
+                        <li>Экстремальные виды спорта</li>
+                        <li>До 365 дней годового покрытия</li>
+                    </ul>
+                    <button class="plan-btn" style="background: #ff9800;">Выбрать план</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="insurance-comparison">
+            <h3 style="margin-bottom: 20px; color: var(--text-primary);">📊 Подробное сравнение</h3>
+            <table class="comparison-table">
+                <tr>
+                    <th>Вид покрытия</th>
+                    <th>Базовый</th>
+                    <th>Стандартный</th>
+                    <th>Премиум</th>
+                </tr>
+                <tr>
+                    <td><strong>Медицинские расходы</strong></td>
+                    <td>$50,000</td>
+                    <td>$100,000</td>
+                    <td>$250,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Экстренная эвакуация</strong></td>
+                    <td>✓</td>
+                    <td>✓ + Транспорт</td>
+                    <td>✓ + Авиатранспорт</td>
+                </tr>
+                <tr>
+                    <td><strong>Страховка багажа</strong></td>
+                    <td>Базовая</td>
+                    <td>$2,500</td>
+                    <td>$5,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Отмена рейса</strong></td>
+                    <td>✗</td>
+                    <td>$1,000</td>
+                    <td>$2,500</td>
+                </tr>
+                <tr>
+                    <td><strong>Экстремальные виды спорта</strong></td>
+                    <td>✗</td>
+                    <td>Ограниченно</td>
+                    <td>✓ Полное</td>
+                </tr>
+                <tr>
+                    <td><strong>Максимальная длительность</strong></td>
+                    <td>15 дней</td>
+                    <td>45 дней</td>
+                    <td>365 дней</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="info-section">
+            <h4>🏥 Что входит в страховку</h4>
+            <ul>
+                <li>Лечение за рубежом</li>
+                <li>Экстренная стоматология</li>
+                <li>Госпитализация</li>
+                <li>Экстренная эвакуация и репатриация</li>
+                <li>Потеря или задержка багажа</li>
+                <li>Отмена и задержка поездки</li>
+                <li>Страховка от несчастного случая</li>
+                <li>Потеря документов</li>
+                <li>Зимние виды спорта (в отдельных планах)</li>
+                <li>Поддержка 24/7</li>
+            </ul>
+        </div>
+
+        <div class="info-section">
+            <h4>❌ Стандартные исключения</h4>
+            <ul>
+                <li>Существующие заболевания (если не декларированы)</li>
+                <li>Поездки в страны под запретом</li>
+                <li>Экстремальные виды спорта (если не указаны)</li>
+                <li>Претензии из-за алкоголя или наркотиков</li>
+                <li>Поездки без действительной визы</li>
+                <li>Отмена из-за забастовок или погоды</li>
+                <li>Претензии в течение 14 дней после покупки</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

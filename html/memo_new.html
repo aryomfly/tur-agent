@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чек-лист туриста - Go&Fly</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">✈️ Go&Fly</div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../index.html">Главная</a></li>
+                    <li><a href="bron.html">Бронирование</a></li>
+                    <li><a href="visas.html">Визы</a></li>
+                    <li><a href="insurance.html">Страхование</a></li>
+                    <li><a href="memo.html">Памятка</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeToggle">🌙</button>
+        </div>
+    </header>
+
+    <div class="memo-container">
+        <a href="../index.html" class="back-btn">← На главную</a>
+
+        <div class="memo-header">
+            <h1>Чек-лист туриста</h1>
+            <p>Полная инструкция по подготовке к путешествию</p>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 0%;">0%</div>
+        </div>
+
+        <div class="quick-tips">
+            <h4>⏰ График подготовки</h4>
+            <ul>
+                <li><strong>3 месяца до поездки:</strong> Забронируйте рейсы и отель, проверьте требования к визам</li>
+                <li><strong>2 месяца до поездки:</strong> Подайте документы на визу, оформите страховку</li>
+                <li><strong>1 месяц до поездки:</strong> Подтвердите бронирования, организуйте трансфер</li>
+                <li><strong>2 недели до поездки:</strong> Проверьте погоду, упакуйтесь, повторите маршрут</li>
+                <li><strong>1 неделя до поездки:</strong> Финальные подтверждения, уведомите банк</li>
+            </ul>
+        </div>
+
+        <!-- Documents Section -->
+        <div class="memo-section">
+            <div class="section-title">📄 Документы и бумаги</div>
+            <div class="section-content">
+                <ul class="checklist">
+                    <li><input type="checkbox" id="passport"><label for="passport">Действительный паспорт (6+ месяцев)</label></li>
+                    <li><input type="checkbox" id="visa"><label for="visa">Виза (если требуется)</label></li>
+                    <li><input type="checkbox" id="tickets"><label for="tickets">Авиабилеты/билеты на поезд/автобус</label></li>
+                    <li><input type="checkbox" id="hotel"><label for="hotel">Подтверждение отеля</label></li>
+                    <li><input type="checkbox" id="insurance"><label for="insurance">Документы страховки</label></li>
+                    <li><input type="checkbox" id="vaccination"><label for="vaccination">Сертификаты вакцинации (если требуются)</label></li>
+                </ul>
+                <div class="subsection">
+                    <div class="subsection-title">📱 Цифровые копии</div>
+                    <ul class="checklist">
+                        <li><input type="checkbox" id="passport-copy"><label for="passport-copy">Фото паспорта (облако)</label></li>
+                        <li><input type="checkbox" id="insurance-copy"><label for="insurance-copy">Копии страховки</label></li>
+                        <li><input type="checkbox" id="booking-copy"><label for="booking-copy">Подтверждения бронирования (email)</label></li>
+                        <li><input type="checkbox" id="contact-copy"><label for="contact-copy">Список экстренных контактов</label></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Money & Financial -->
+        <div class="memo-section">
+            <div class="section-title">💰 Деньги и финансы</div>
+            <div class="section-content">
+                <ul class="checklist">
+                    <li><input type="checkbox" id="exchange"><label for="exchange">Обменяйте валюту в банке</label></li>
+                    <li><input type="checkbox" id="card-notify"><label for="card-notify">Уведомите банк о поездке</label></li>
+                    <li><input type="checkbox" id="card-pins"><label for="card-pins">Проверьте работу PIN кодов карт</label></li>
+                    <li><input type="checkbox" id="budget"><label for="budget">Установите ежедневный бюджет</label></li>
+                    <li><input type="checkbox" id="atm-info"><label for="atm-info">Найдите банкоматы в пункте назначения</label></li>
+                    <li><input type="checkbox" id="travel-card"><label for="travel-card">Получите travel card (опционально)</label></li>
+                </ul>
+                <div class="subsection">
+                    <div class="subsection-title">💳 Резервные средства</div>
+                    <ul class="checklist">
+                        <li><input type="checkbox" id="emergency-cash"><label for="emergency-cash">Запас наличных (USD/EUR)</label></li>
+                        <li><input type="checkbox" id="credit-card"><label for="credit-card">Вторая кредитная карта</label></li>
+                        <li><input type="checkbox" id="wire-info"><label for="wire-info">Узнайте как получить денежный перевод</label></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Health & Safety -->
+        <div class="memo-section">
+            <div class="section-title">🏥 Здоровье и безопасность</div>
+            <div class="section-content">
+                <ul class="checklist">
+                    <li><input type="checkbox" id="prescriptions"><label for="prescriptions">Упакуйте лекарства в оригинальных упаковках</label></li>
+                    <li><input type="checkbox" id="first-aid"><label for="first-aid">Аптечка первой помощи</label></li>
+                    <li><input type="checkbox" id="health-check"><label for="health-check">Посетите врача перед поездкой</label></li>
+                    <li><input type="checkbox" id="vaccinations"><label for="vaccinations">Сделайте необходимые прививки</label></li>
+                    <li><input type="checkbox" id="medical-records"><label for="medical-records">Возьмите выписку медицинской истории</label></li>
+                    <li><input type="checkbox" id="glasses"><label for="glasses">Упакуйте очки/линзы + запасные</label></li>
+                </ul>
+                <div class="subsection">
+                    <div class="subsection-title">⚠️ Экстренная информация</div>
+                    <ul class="checklist">
+                        <li><input type="checkbox" id="doctor-info"><label for="doctor-info">Найдите местные больницы/врачей</label></li>
+                        <li><input type="checkbox" id="embassy"><label for="embassy">Узнайте адрес посольства</label></li>
+                        <li><input type="checkbox" id="emergency-phone"><label for="emergency-phone">Сохраните номера скорой помощи</label></li>
+                        <li><input type="checkbox" id="blood-type"><label for="blood-type">Имейте информацию о группе крови</label></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Packing -->
+        <div class="memo-section">
+            <div class="section-title">🎒 Список вещей</div>
+            <div class="section-content">
+                <div class="subsection">
+                    <div class="subsection-title">👕 Одежда</div>
+                    <ul class="checklist">
+                        <li><input type="checkbox" id="underwear"><label for="underwear">Нижнее белье и носки (7-10 комплектов)</label></li>
+                        <li><input type="checkbox" id="shirts"><label for="shirts">Рубашки/блузки (5-7)</label></li>
+                        <li><input type="checkbox" id="pants"><label for="pants">Брюки/юбки (2-3)</label></li>
+                        <li><input type="checkbox" id="jacket"><label for="jacket">Куртка/свитер (по погоде)</label></li>
+                        <li><input type="checkbox" id="shoes"><label for="shoes">Удобная обувь для ходьбы</label></li>
+                        <li><input type="checkbox" id="formal"><label for="formal">Нарядный наряд (если нужен)</label></li>
+                        <li><input type="checkbox" id="sleepwear"><label for="sleepwear">Пижама</label></li>
+                        <li><input type="checkbox" id="activewear"><label for="activewear">Спортивная одежда</label></li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">🧴 Туалетные принадлежности</div>
+                    <ul class="checklist">
+                        <li><input type="checkbox" id="toothbrush"><label for="toothbrush">Зубная щетка и паста</label></li>
+                        <li><input type="checkbox" id="shampoo"><label for="shampoo">Шампунь/кондиционер</label></li>
+                        <li><input type="checkbox" id="soap"><label for="soap">Мыло/гель для душа</label></li>
+                        <li><input type="checkbox" id="deodorant"><label for="deodorant">Дезодорант</label></li>
+                        <li><input type="checkbox" id="skincare"><label for="skincare">Средства для кожи</label></li>
+                        <li><input type="checkbox" id="sunscreen"><label for="sunscreen">Солнцезащитный крем (SPF 30+)</label></li>
+                        <li><input type="checkbox" id="hairbrush"><label for="hairbrush">Расческа/щетка</label></li>
+                        <li><input type="checkbox" id="feminine"><label for="feminine">Гигиенические средства</label></li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">📱 Электроника</div>
+                    <ul class="checklist">
+                        <li><input type="checkbox" id="chargers"><label for="chargers">Зарядные устройства телефона</label></li>
+                        <li><input type="checkbox" id="power-bank"><label for="power-bank">Внешний аккумулятор</label></li>
+                        <li><input type="checkbox" id="adapter"><label for="adapter">Адаптер для розеток</label></li>
+                        <li><input type="checkbox" id="headphones"><label for="headphones">Наушники/наушники</label></li>
+                        <li><input type="checkbox" id="camera"><label for="camera">Фотоаппарат (если нужен)</label></li>
+                        <li><input type="checkbox" id="sim"><label for="sim">Информация о местной SIM</label></li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">🎁 Прочее</div>
+                    <ul class="checklist">
+                        <li><input type="checkbox" id="luggage-tag"><label for="luggage-tag">Бирки для багажа</label></li>
+                        <li><input type="checkbox" id="lock"><label for="lock">Дорожный замок</label></li>
+                        <li><input type="checkbox" id="notepad"><label for="notepad">Блокнот и ручка</label></li>
+                        <li><input type="checkbox" id="snacks"><label for="snacks">Дорожные закуски</label></li>
+                        <li><input type="checkbox" id="guidebook"><label for="guidebook">Путеводитель/карта</label></li>
+                        <li><input type="checkbox" id="gifts"><label for="gifts">Небольшие подарки хозяину</label></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Before Departure -->
+        <div class="memo-section">
+            <div class="section-title">✈️ Перед вылетом</div>
+            <div class="section-content">
+                <ul class="checklist">
+                    <li><input type="checkbox" id="confirm-flights"><label for="confirm-flights">Подтвердите рейсы за 24 часа</label></li>
+                    <li><input type="checkbox" id="check-weather"><label for="check-weather">Проверьте прогноз погоды</label></li>
+                    <li><input type="checkbox" id="arrange-transport"><label for="arrange-transport">Организуйте трансфер до аэропорта</label></li>
+                    <li><input type="checkbox" id="stop-deliveries"><label for="stop-deliveries">Остановите доставку почты</label></li>
+                    <li><input type="checkbox" id="water-off"><label for="water-off">Перекройте воду/газ</label></li>
+                    <li><input type="checkbox" id="lights"><label for="lights">Установите таймер для света</label></li>
+                    <li><input type="checkbox" id="alarm"><label for="alarm">Включите сигнализацию</label></li>
+                    <li><input type="checkbox" id="plants"><label for="plants">Полейте растения</label></li>
+                    <li><input type="checkbox" id="pets"><label for="pets">Организуйте уход за животными</label></li>
+                    <li><input type="checkbox" id="tell-people"><label for="tell-people">Сообщите кому-то о поездке</label></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Emergency Contacts -->
+        <div class="memo-section emergency-section">
+            <div class="section-title">🆘 Экстренные контакты</div>
+            <div class="section-content">
+                <ul class="checklist" style="background: transparent; margin: 0;">
+                    <li style="background: transparent; border: none; padding: 8px 0;">
+                        <strong>Служба спасения:</strong> 911 (США) / 112 (ЕС)
+                    </li>
+                    <li style="background: transparent; border: none; padding: 8px 0;">
+                        <strong>Посольство:</strong> [Добавьте номер посольства вашей страны]
+                    </li>
+                    <li style="background: transparent; border: none; padding: 8px 0;">
+                        <strong>Страховка:</strong> [Номер полиса и горячая линия]
+                    </li>
+                    <li style="background: transparent; border: none; padding: 8px 0;">
+                        <strong>Банк:</strong> [Линия мошенничества 24/7]
+                    </li>
+                    <li style="background: transparent; border: none; padding: 8px 0;">
+                        <strong>Контакт для экстренного случая:</strong> [Номер телефона]
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <button class="print-btn" onclick="window.print()">🖨️ Печать чек-листа</button>
+    </div>
+
+    <script src="../js/script.js"></script>
+    <script>
+        // Progress bar functionality
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+            const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const percentage = Math.round((checked / checkboxes.length) * 100);
+            
+            const progressFill = document.getElementById('progressFill');
+            progressFill.style.width = percentage + '%';
+            progressFill.textContent = percentage + '%';
+        }
+
+        // Add event listeners to all checkboxes
+        document.querySelectorAll('.checklist input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', updateProgress);
+        });
+
+        // Save progress to localStorage
+        document.querySelectorAll('.checklist input[type="checkbox"]').forEach((checkbox, index) => {
+            checkbox.addEventListener('change', () => {
+                localStorage.setItem('memo-' + index, checkbox.checked);
+            });
+
+            // Load saved progress
+            if (localStorage.getItem('memo-' + index) === 'true') {
+                checkbox.checked = true;
+            }
+        });
+
+        // Initial progress calculation
+        updateProgress();
+    </script>
+</body>
+</html>

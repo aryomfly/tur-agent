@@ -8,6 +8,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- CAPTCHA VERIFICATION MODAL -->
+    <div id="captchaModal" class="captcha-modal">
+        <div class="captcha-modal-content">
+            <div class="captcha-header">
+                <h2>Проверка безопасности</h2>
+                <p>Пожалуйста, подтвердите, что вы не робот</p>
+            </div>
+            <div class="captcha-body">
+                <div class="captcha-checkbox">
+                    <input type="checkbox" id="captchaCheckbox" class="captcha-input">
+                    <label for="captchaCheckbox">
+                        <span>Я не робот</span>
+                        <small>reCAPTCHA</small>
+                    </label>
+                </div>
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ctext x='5' y='20' font-size='14' fill='%23666'%3EGoogle%3C/text%3E%3C/svg%3E" alt="reCAPTCHA" class="captcha-logo">
+            </div>
+            <div class="captcha-footer">
+                <p class="captcha-text">
+                    This site is protected by reCAPTCHA and the Google
+                    <a href="#">Privacy Policy</a> and
+                    <a href="#">Terms of Service</a> apply.
+                </p>
+            </div>
+            <button id="captchaSubmit" class="captcha-btn">Продолжить</button>
+        </div>
+    </div>
 
     <header>
         <div class="container header-container">
@@ -22,9 +49,9 @@
                     <li class="dropdown">
                         <a href="#clients" class="dropbtn">Для клиентов <span class="arrow">▼</span></a>
                         <div class="dropdown-content">
-                            <a href="#visa">Визы и документы</a>
-                            <a href="#insurance">Страхование</a>
-                            <a href="#memo">Памятка туриста</a>
+                            <a href="./html/visas.html">Визы и документы</a>
+                            <a href="./html/insurance.html">Страхование</a>
+                            <a href="./html/memo.html">Памятка туриста</a>
                         </div>
                     </li>
                     <li><a href="#about-us">О нас</a></li>
@@ -233,6 +260,39 @@
                         <p class="flight-price">от $229</p>
                         <p class="flight-price-alt">от 98,470 ₸</p>
                         <button class="book-flight-btn" onclick="openFlightBooking('Алматы → Денпасар')">Купить билет</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ИНФОРМАЦИОННЫЕ УСЛУГИ -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Дополнительные услуги 🛎️</h2>
+            <div class="cards-grid">
+                <div class="card info-card">
+                    <div class="card-icon">🛂</div>
+                    <div class="card-info">
+                        <h3>Визы и документы</h3>
+                        <p>Полная информация о требованиях виз для популярных направлений, сроки оформления и необходимые документы.</p>
+                        <a href="./html/visas.html" class="card-link">Подробнее →</a>
+                    </div>
+                </div>
+                <div class="card info-card">
+                    <div class="card-icon">🏥</div>
+                    <div class="card-info">
+                        <h3>Страхование</h3>
+                        <p>Комплексное страховое покрытие для путешествий с разными уровнями защиты и доступными ценами.</p>
+                        <a href="./html/insurance.html" class="card-link">Подробнее →</a>
+                    </div>
+                </div>
+                <div class="card info-card">
+                    <div class="card-icon">✓</div>
+                    <div class="card-info">
+                        <h3>Чек-лист туриста</h3>
+                        <p>Интерактивный чек-лист для подготовки к путешествию — ничего не забудете дома!</p>
+                        <a href="html/memo_new.html" class="card-link">Подробнее →</a>
                     </div>
                 </div>
             </div>
