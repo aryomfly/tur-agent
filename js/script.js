@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // ИНИЦИАЛИЗАЦИЯ ТЕМЫ
+    initTheme();
+
     const modal = document.getElementById('quizModal');
     const openBtn = document.getElementById('openQuizBtn');
     const closeBtn = document.querySelector('.close-btn');
@@ -67,6 +70,37 @@ document.addEventListener('DOMContentLoaded', () => {
     // Обновление времени последнего обновления валют
     updateCurrencyTime();
 });
+
+// ===== ФУНКЦИИ ТЕМЫ =====
+function initTheme() {
+    const themeToggle = document.getElementById('themeToggle');
+    
+    // Получаем сохраненную тему из localStorage
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    applyTheme(savedTheme);
+    
+    // Обработчик клика на кнопку переключения
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            applyTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    }
+}
+
+function applyTheme(theme) {
+    const themeToggle = document.getElementById('themeToggle');
+    
+    if (theme === 'dark') {
+        document.body.classList.add('dark-theme');
+        if (themeToggle) themeToggle.classList.add('dark');
+    } else {
+        document.body.classList.remove('dark-theme');
+        if (themeToggle) themeToggle.classList.remove('dark');
+    }
+}
 
 // Функция для обновления времени
 function updateCurrencyTime() {
