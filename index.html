@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go&Fly - Твой идеальный отдых</title>
+    <link rel="stylesheet" href="../aga/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo">Go&Fly ✈️</div>
+            
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="#tours">Туры</a></li>
+                    <li><a href="#currency">Валюты</a></li>
+                    <li><a href="#hotels">Отели</a></li>
+                    <li><a href="#flights">Самолеты</a></li>
+                    <li class="dropdown">
+                        <a href="#clients" class="dropbtn">Для клиентов <span class="arrow">▼</span></a>
+                        <div class="dropdown-content">
+                            <a href="#visa">Визы и документы</a>
+                            <a href="#insurance">Страхование</a>
+                            <a href="#memo">Памятка туриста</a>
+                        </div>
+                    </li>
+                    <li><a href="#about-us">О нас</a></li>
+                    <li><a href="#company">О компании</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" style="background: url('../aga/bj_1.jpg') center/cover no-repeat;">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>Путешествия, которые меняют жизнь</h1>
+                <p>Мы найдем для вас идеальное место под солнцем</p>
+                <button id="openQuizBtn" class="main-btn">Подобрать нужную путевку</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="tours" class="section">
+        <div class="container">
+            <h2 class="section-title">Популярные направления</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-img" style="background-image: url('../aga/paris.jpg');"></div>
+                    <div class="card-info">
+                        <h3>Париж, Франция</h3>
+                        <p>Романтический уикенд.</p>
+                        <a class="buy-btn" href="paris-tour.html">Подробнее</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img" style="background-image: url('../aga/Bali.jpg');"></div>
+                    <div class="card-info">
+                        <h3>Бали, Индонезия</h3>
+                        <p>Серфинг и релакс.</p>
+                        <a class="buy-btn" href="bali-tour.html">Подробнее</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img" style="background-image: url('../aga/Dubai.jpg');"></div>
+                    <div class="card-info">
+                        <h3>Дубай, ОАЭ</h3>
+                        <p>Роскошь пустыни.</p>
+                        <a class="buy-btn" href="dubai-tour.html">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hot-tours" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Горячее предложения 🔥</h2>
+            <p style="text-align: center;">Только сегодня, если купить билет, от 115 тысяч тенге, в подарок булочка в любом аэропорту</p>
+        </div>
+    </section>
+
+    <!-- КУРСЫ ВАЛЮТ -->
+    <section id="currency" class="section">
+        <div class="container">
+            <h2 class="section-title">Курсы валют 💱</h2>
+            <div class="currency-grid">
+                <div class="currency-card">
+                    <h3>USD (Доллар)</h3>
+                    <p class="exchange-rate">1 USD = <span id="usd-rate">430</span> ₸</p>
+                    <p class="exchange-rate">1 USD = <span id="usd-rub">95</span> ₽</p>
+                    <small>Обновлено: <span id="currency-time">сейчас</span></small>
+                </div>
+                <div class="currency-card">
+                    <h3>RUB (Рубль)</h3>
+                    <p class="exchange-rate">1 RUB = <span id="rub-rate">4.5</span> ₸</p>
+                    <p class="exchange-rate">1 RUB = 1 ₽</p>
+                    <small>Курс: официальный</small>
+                </div>
+                <div class="currency-card">
+                    <h3>KZT (Тенге)</h3>
+                    <p class="exchange-rate">1 KZT = 1 ₸</p>
+                    <p class="exchange-rate">1 KZT = <span id="kzt-rub">0.22</span> ₽</p>
+                    <small>Локальная валюта</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЦЕНЫ НА ОТЕЛИ -->
+    <section id="hotels" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Лучшие цены на отели 🏨</h2>
+            <div class="hotels-grid">
+                <div class="hotel-card">
+                    <div class="hotel-img" style="background-image: url('../aga/hotel_1.jpg');"></div>
+                    <div class="hotel-info">
+                        <h3>Paradise Resort ★★★★★</h3>
+                        <p class="hotel-location">📍 Мальдивы</p>
+                        <p class="hotel-price">$299 / ночь</p>
+                        <p class="hotel-price-alt">28,570 ₸ / ночь</p>
+                        <button class="book-hotel-btn" onclick="openHotelBooking('Paradise Resort')">Забронировать</button>
+                    </div>
+                </div>
+                <div class="hotel-card">
+                    <div class="hotel-img" style="background-image: url('../aga/hotel_2.jpg');"></div>
+                    <div class="hotel-info">
+                        <h3>Bali Sunset ★★★★</h3>
+                        <p class="hotel-location">📍 Бали, Индонезия</p>
+                        <p class="hotel-price">$89 / ночь</p>
+                        <p class="hotel-price-alt">38,270 ₸ / ночь</p>
+                        <button class="book-hotel-btn" onclick="openHotelBooking('Bali Sunset')">Забронировать</button>
+                    </div>
+                </div>
+                <div class="hotel-card">
+                    <div class="hotel-img" style="background-image: url('../aga/hotel_3.jpg');"></div>
+                    <div class="hotel-info">
+                        <h3>Paris Elegance ★★★★</h3>
+                        <p class="hotel-location">📍 Париж, Франция</p>
+                        <p class="hotel-price">$199 / ночь</p>
+                        <p class="hotel-price-alt">85,570 ₸ / ночь</p>
+                        <button class="book-hotel-btn" onclick="openHotelBooking('Paris Elegance')">Забронировать</button>
+                    </div>
+                </div>
+                <div class="hotel-card">
+                    <div class="hotel-img" style="background-image: url('../aga/hotel_4.jpg');"></div>
+                    <div class="hotel-info">
+                        <h3>Dubai Luxury ★★★★★</h3>
+                        <p class="hotel-location">📍 Дубай, ОАЭ</p>
+                        <p class="hotel-price">$449 / ночь</p>
+                        <p class="hotel-price-alt">193,170 ₸ / ночь</p>
+                        <button class="book-hotel-btn" onclick="openHotelBooking('Dubai Luxury')">Забронировать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЦЕНЫ НА САМОЛЕТЫ -->
+    <section id="flights" class="section">
+        <div class="container">
+            <h2 class="section-title">Выгодные рейсы ✈️</h2>
+            <div class="flights-grid">
+                <div class="flight-card">
+                    <div class="flight-header">
+                        <div class="flight-route">
+                            <span class="city">🇰🇿 Алматы</span>
+                            <span class="arrow-flight">→</span>
+                            <span class="city">🇲🇾 Куала-Лумпур</span>
+                        </div>
+                    </div>
+                    <div class="flight-details">
+                        <p><strong>Авиакомпания:</strong> Air Astana</p>
+                        <p><strong>Время в пути:</strong> 5ч 40мин</p>
+                        <p class="flight-price">от $199</p>
+                        <p class="flight-price-alt">от 85,570 ₸</p>
+                        <button class="book-flight-btn" onclick="openFlightBooking('Алматы → Куала-Лумпур')">Купить билет</button>
+                    </div>
+                </div>
+                <div class="flight-card">
+                    <div class="flight-header">
+                        <div class="flight-route">
+                            <span class="city">🇰🇿 Нур-Султан</span>
+                            <span class="arrow-flight">→</span>
+                            <span class="city">🇦🇪 Дубай</span>
+                        </div>
+                    </div>
+                    <div class="flight-details">
+                        <p><strong>Авиакомпания:</strong> FlyDubai</p>
+                        <p><strong>Время в пути:</strong> 3ч 15мин</p>
+                        <p class="flight-price">от $89</p>
+                        <p class="flight-price-alt">от 38,270 ₸</p>
+                        <button class="book-flight-btn" onclick="openFlightBooking('Нур-Султан → Дубай')">Купить билет</button>
+                    </div>
+                </div>
+                <div class="flight-card">
+                    <div class="flight-header">
+                        <div class="flight-route">
+                            <span class="city">🇰🇿 Алматы</span>
+                            <span class="arrow-flight">→</span>
+                            <span class="city">🇹🇭 Бангкок</span>
+                        </div>
+                    </div>
+                    <div class="flight-details">
+                        <p><strong>Авиакомпания:</strong> Turkish Airlines</p>
+                        <p><strong>Время в пути:</strong> 6ч 30мин</p>
+                        <p class="flight-price">от $149</p>
+                        <p class="flight-price-alt">от 64,170 ₸</p>
+                        <button class="book-flight-btn" onclick="openFlightBooking('Алматы → Бангкок')">Купить билет</button>
+                    </div>
+                </div>
+                <div class="flight-card">
+                    <div class="flight-header">
+                        <div class="flight-route">
+                            <span class="city">🇰🇿 Алматы</span>
+                            <span class="arrow-flight">→</span>
+                            <span class="city">🇮🇩 Денпасар (Бали)</span>
+                        </div>
+                    </div>
+                    <div class="flight-details">
+                        <p><strong>Авиакомпания:</strong> Garuda Indonesia</p>
+                        <p><strong>Время в пути:</strong> 7ч 45мин</p>
+                        <p class="flight-price">от $229</p>
+                        <p class="flight-price-alt">от 98,470 ₸</p>
+                        <button class="book-flight-btn" onclick="openFlightBooking('Алматы → Денпасар')">Купить билет</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about-us" class="section">
+        <div class="container split-section">
+            <div class="text-block">
+                <h2>О нас</h2>
+                <p>Мы — команда энтузиастов, посетивших более 50 стран. Мы знаем не только популярные маршруты, но и секретные уголки планеты.</p>
+            </div>
+            <div class="text-block" id="company">
+                <h2>О компании</h2>
+                <p>Go&Fly работает с 2010 года. За это время мы отправили на отдых более 15 000 счастливых туристов. Мы работаем только с проверенными туроператорами.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container footer-content">
+            <div>
+                <h3>Go&Fly Agency</h3>
+                <p>Москва, ул. Пушкина, д. 10</p>
+            </div>
+            <div>
+                <h3>Связь</h3>
+                <p>+7 (999) 000-00-00</p>
+                <p>info@gofly.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2024 Go&Fly. Все права защищены.
+        </div>
+    </footer>
+
+    <div id="quizModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Подбор идеального тура 🌴</h2>
+            <form id="tourForm">
+                <div class="form-group">
+                    <label>Куда вы хотите полететь?</label>
+                    <select id="destination">
+                        <option value="sea">На море / Пляж</option>
+                        <option value="mountains">В горы / Лыжи</option>
+                        <option value="city">Город / Экскурсии</option>
+                        <option value="exotic">Экзотика / Острова</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Звездность отеля:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="stars" value="3"> 3★</label>
+                        <label><input type="radio" name="stars" value="4" checked> 4★</label>
+                        <label><input type="radio" name="stars" value="5"> 5★</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Предпочтительные даты:</label>
+                    <input type="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Ваш бюджет (на человека):</label>
+                    <input type="range" min="500" max="5000" step="100" id="budgetRange" oninput="document.getElementById('budgetVal').innerText = this.value">
+                    <p>До $<span id="budgetVal">2700</span></p>
+                </div>
+
+                <div class="form-group">
+                    <label>Ваш телефон для связи:</label>
+                    <input type="tel" placeholder="+7 (___) ___-__-__" required>
+                </div>
+
+                <button type="submit" class="submit-btn">Найти туры</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО БРОНИРОВАНИЯ ОТЕЛЯ -->
+    <div id="hotelBookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeHotelBooking()">&times;</span>
+            <h2>Бронирование отеля 🏨</h2>
+            <form id="hotelForm">
+                <div class="form-group">
+                    <label>Название отеля:</label>
+                    <input type="text" id="hotelName" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Ваше имя:</label>
+                    <input type="text" id="guestName" required>
+                </div>
+                <div class="form-group">
+                    <label>E-mail:</label>
+                    <input type="email" id="hotelEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Дата заезда:</label>
+                    <input type="date" id="checkInDate" required>
+                </div>
+                <div class="form-group">
+                    <label>Дата выезда:</label>
+                    <input type="date" id="checkOutDate" required>
+                </div>
+                <div class="form-group">
+                    <label>Количество ночей:</label>
+                    <input type="number" id="nights" min="1" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label>Валюта оплаты:</label>
+                    <select id="hotelCurrency">
+                        <option value="usd">USD ($)</option>
+                        <option value="kzt">KZT (₸)</option>
+                        <option value="rub">RUB (₽)</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Забронировать</button>
+            </form>
+            <div id="hotelBookingResult" style="display: none; margin-top: 15px; padding: 12px; border-radius: 8px; background: #e9f7ef; color: #155724; border: 1px solid #c3e6cb;"></div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ПОКУПКИ БИЛЕТА НА САМОЛЕТ -->
+    <div id="flightBookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeFlightBooking()">&times;</span>
+            <h2>Покупка авиабилета ✈️</h2>
+            <form id="flightForm">
+                <div class="form-group">
+                    <label>Маршрут:</label>
+                    <input type="text" id="flightRoute" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Ваше имя:</label>
+                    <input type="text" id="passengerName" required>
+                </div>
+                <div class="form-group">
+                    <label>Паспортные данные:</label>
+                    <input type="text" id="passportNumber" placeholder="Номер паспорта" required>
+                </div>
+                <div class="form-group">
+                    <label>E-mail:</label>
+                    <input type="email" id="flightEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Дата вылета:</label>
+                    <input type="date" id="departureDate" required>
+                </div>
+                <div class="form-group">
+                    <label>Класс обслуживания:</label>
+                    <select id="seatClass">
+                        <option value="economy">Эконом</option>
+                        <option value="business">Бизнес</option>
+                        <option value="first">Первый класс</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Валюта оплаты:</label>
+                    <select id="flightCurrency">
+                        <option value="usd">USD ($)</option>
+                        <option value="kzt">KZT (₸)</option>
+                        <option value="rub">RUB (₽)</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Купить билет</button>
+            </form>
+            <div id="flightBookingResult" style="display: none; margin-top: 15px; padding: 12px; border-radius: 8px; background: #e9f7ef; color: #155724; border: 1px solid #c3e6cb;"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

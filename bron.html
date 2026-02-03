@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бронирование — Go&Fly</title>
+    <link rel="stylesheet" href="../aga/style.css">
+    <style>
+        .booking-tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 30px;
+            border: 2px solid #007bff;
+            background: white;
+            color: #007bff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            background: #007bff;
+            color: white;
+        }
+
+        .tab-btn:hover {
+            background: #007bff;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .hotel-grid-booking {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .hotel-booking-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .hotel-booking-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .hotel-image {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hotel-booking-info {
+            padding: 20px;
+        }
+
+        .hotel-booking-info h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .hotel-location {
+            color: #007bff;
+            font-weight: 600;
+            margin: 8px 0;
+        }
+
+        .hotel-rating {
+            color: #ffc107;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .hotel-price-booking {
+            font-size: 20px;
+            color: #28a745;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .expand-form-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .expand-form-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .hotel-form-section {
+            display: none;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 2px solid #e9ecef;
+        }
+
+        .hotel-form-section.show {
+            display: block;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .hotel-form-section label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .hotel-form-section input,
+        .hotel-form-section select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .form-submit-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .book-btn {
+            flex: 1;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .book-btn:hover {
+            background-color: #218838;
+        }
+
+        .cancel-btn {
+            flex: 1;
+            padding: 12px;
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .cancel-btn:hover {
+            background-color: #5a6268;
+        }
+
+        .booking-result {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #e9f7ef;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .booking-result.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- НАВИГАЦИЯ -->
+    <header style="margin-bottom: 20px;">
+        <div class="container header-container">
+            <div class="logo">Go&Fly ✈️</div>
+            <nav>
+                <ul class="nav-list" style="margin: 0;">
+                    <li><a href="index.html">На главную</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ВКЛАДКИ БРОНИРОВАНИЯ -->
+    <section class="section booking-section">
+        <div class="container">
+            <h2 class="section-title">Выберите что забронировать</h2>
+            
+            <div class="booking-tabs">
+                <button class="tab-btn active" onclick="switchTab('flights')">✈️ Авиабилеты</button>
+                <button class="tab-btn" onclick="switchTab('hotels')">🏨 Отели</button>
+            </div>
+
+            <!-- ТАБ - АВИАБИЛЕТЫ -->
+            <div id="flights" class="tab-content active">
+                <h3 style="text-align: center; margin-bottom: 20px;">Бронирование авиабилета</h3>
+                <div class="booking-form">
+                    <form id="bookingForm">
+                        <div class="form-group">
+                            <label for="bookingEmail">E‑mail для подтверждения</label>
+                            <input id="bookingEmail" type="email" placeholder="you@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="flightDate">Дата вылета</label>
+                            <input id="flightDate" type="date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="planeSelect">Выберите самолёт</label>
+                            <select id="planeSelect">
+                                <option value="B737">✈️ Boeing 737 - Экономный и надежный</option>
+                                <option value="A320">✈️ Airbus A320 - Популярный пассажирский</option>
+                                <option value="E195">✈️ Embraer 195 - Эконом-класс комфорта</option>
+                                <option value="ATR72">✈️ ATR 72 - Региональные маршруты</option>
+                                <option value="SSJ100">✈️ Sukhoi Superjet 100 - Современный лайнер</option>
+                            </select>
+                        </div>
+
+                        <div style="display:flex; gap:10px; align-items:center; flex-wrap: wrap;">
+                            <button type="submit" class="submit-btn">Забронировать билет</button>
+                            <a class="main-btn" href="index.html" style="padding: 15px 40px;">Вернуться</a>
+                        </div>
+
+                        <div id="bookingResult" class="booking-result"></div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- ТАБ - ОТЕЛИ -->
+            <div id="hotels" class="tab-content">
+                <h3 style="text-align: center; margin-bottom: 20px;">Бронирование отеля</h3>
+                <div class="hotel-grid-booking">
+                    <!-- Отель 1 -->
+                    <div class="hotel-booking-card">
+                        <div class="hotel-image" style="background-image: url('../aga/hotel_1.jpg');"></div>
+                        <div class="hotel-booking-info">
+                            <h3>Paradise Resort</h3>
+                            <p class="hotel-location">📍 Мальдивы</p>
+                            <p class="hotel-rating">⭐⭐⭐⭐⭐ 5.0 (428 отзывов)</p>
+                            <p class="hotel-price-booking">$299 / ночь</p>
+                            <p style="color: #666; font-size: 13px;">28,570 ₸ / ночь</p>
+                            <button class="expand-form-btn" onclick="toggleHotelForm(this, 'Paradise Resort', 299)">Забронировать</button>
+                            <div class="hotel-form-section">
+                                <form class="hotel-booking-form">
+                                    <div class="form-row">
+                                        <div>
+                                            <label>Ваше имя:</label>
+                                            <input type="text" class="guest-name" placeholder="Иван Петров" required>
+                                        </div>
+                                        <div>
+                                            <label>E-mail:</label>
+                                            <input type="email" class="guest-email" placeholder="ivan@mail.com" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div>
+                                            <label>Дата заезда:</label>
+                                            <input type="date" class="check-in" required>
+                                        </div>
+                                        <div>
+                                            <label>Дата выезда:</label>
+                                            <input type="date" class="check-out" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div>
+                                            <label>Количество номеров:</label>
+                                            <input type="number" class="num-rooms" value="1" min="1" required>
+                                        </div>
+                                        <div>
+                                            <label>Валюта:</label>
+                                            <select class="currency">
+                                                <option value="usd">USD ($)</option>
+                                                <option value="kzt">KZT (₸)</option>
+                                                <option value="rub">RUB (₽)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-submit-row">
+                                        <button type="submit" class="book-btn">Забронировать</button>
+                                        <button type="button" class="cancel-btn" onclick="toggleHotelForm(this)">Отмена</button>
+                                    </div>
+                                </form>
+                                <div class="booking-result"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Отель 2 -->
+                    <div class="hotel-booking-card">
+                        <div class="hotel-image" style="background-image: url('../aga/hotel_2.jpg');"></div>
+                        <div class="hotel-booking-info">
+                            <h3>Bali Sunset</h3>
+                            <p class="hotel-location">📍 Бали, Индонезия</p>
+                            <p class="hotel-rating">⭐⭐⭐⭐ 4.8 (356 отзывов)</p>
+                            <p class="hotel-price-booking">$89 / ночь</p>
+                            <p style="color: #666; font-size: 13px;">38,270 ₸ / ночь</p>
+                            <button class="expand-form-btn" onclick="toggleHotelForm(this, 'Bali Sunset', 89)">Забронировать</button>
+                            <div class="hotel-form-section">
+                                <form class="hotel-booking-form">
+                                    <div class="form-row">
+                                        <div>
+                                            <label>Ваше имя:</label>
+                                            <input type="text" class="guest-name" placeholder="Иван Петров" required>
+                                        </div>
+                                        <div>
+                                            <label>E-mail:</label>
+                                            <input type="email" class="guest-email" placeholder="ivan@mail.com" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div>
+                                            <label>Дата заезда:</label>
+                                            <input type="date" class="check-in" required>
+                                        </div>
+                                        <div>
+                                            <label>Дата выезда:</label>
+                                            <input type="date" class="check-out" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div>
+                                            <label>Количество номеров:</label>
+                                            <input type="number" class="num-rooms" value="1" min="1" required>
+                                        </div>
+                                        <div>
+                                            <label>Валюта:</label>
+                                            <select class="currency">
+                                                <option value="usd">USD ($)</option>
+                                                <option value="kzt">KZT (₸)</option>
+                                                <option value="rub">RUB (₽)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-submit-row">
+                                        <button type="submit" class="book-btn">Забронировать</button>
+                                        <button type="button" class="cancel-btn" onclick="toggleHotelForm(this)">Отмена</button>
+                                    </div>
+                                </form>
+                                <div class="booking-result"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Отель 3 -->
+                    <div class="hotel-booking-card">
+                        <div class="hotel-image" style="background-image: url('../aga/hotel_3.jpg');"></div>
+                        <div class="hotel-booking-info">
+                            <h3>Paris Elegance</h3>
+                            <p class="hotel-location">📍 Париж, Франция</p>
+                            <p class="hotel-rating">⭐⭐⭐⭐ 4.9 (512 отзывов)</p>
+                            <p class="hotel-price-booking">$199 / ночь</p>
+                            <p style="color: #666; font-size: 13px;">85,570 ₸ / ночь</p>
+                            <button class="expand-form-btn" onclick="toggleHotelForm(this, 'Paris Elegance', 199)">Забронировать</button>
+                            <div class="hotel-form-section">
+                                <form class="hotel-booking-form">
+                                    <div class="form-row">
+                                        <div>
+                                            <label>Ваше имя:</label>
+                                            <input type="text" class="guest-name" placeholder="Иван Петров" required>
+                                        </div>
+                                        <div>
+                                            <label>E-mail:</label>
+                                            <input type="email" class="guest-email" placeholder="ivan@mail.com" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div>
+                                            <label>Дата заезда:</label>
+                                            <input type="date" class="check-in" required>
+                                        </div>
+                                        <div>
+                                            <label>Дата выезда:</label>
+                                            <input type="date" class="check-out" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div>
+                                            <label>Количество номеров:</label>
+                                            <input type="number" class="num-rooms" value="1" min="1" required>
+                                        </div>
+                                        <div>
+                                            <label>Валюта:</label>
+                                            <select class="currency">
+                                                <option value="usd">USD ($)</option>
+                                                <option value="kzt">KZT (₸)</option>
+                                                <option value="rub">RUB (₽)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-submit-row">
+                                        <button type="submit" class="book-btn">Забронировать</button>
+                                        <button type="button" class="cancel-btn" onclick="toggleHotelForm(this)">Отмена</button>
+                                    </div>
+                                </form>
+                                <div class="booking-result"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Отель 4 -->
+                    <div class="hotel-booking-card">
+                        <div class="hotel-image" style="background-image: url('../aga/hotel_4.jpg');"></div>
+                        <div class="hotel-booking-info">
+                            <h3>Dubai Luxury</h3>
+                            <p class="hotel-location">📍 Дубай, ОАЭ</p>
+                            <p class="hotel-rating">⭐⭐⭐⭐⭐ 5.0 (684 отзывов)</p>
+                            <p class="hotel-price-booking">$449 / ночь</p>
+                            <p style="color: #666; font-size: 13px;">193,170 ₸ / ночь</p>
+                            <button class="expand-form-btn" onclick="toggleHotelForm(this, 'Dubai Luxury', 449)">Забронировать</button>
+                            <div class="hotel-form-section">
+                                <form class="hotel-booking-form">
+                                    <div class="form-row">
+                                        <div>
+                                            <label>Ваше имя:</label>
+                                            <input type="text" class="guest-name" placeholder="Иван Петров" required>
+                                        </div>
+                                        <div>
+                                            <label>E-mail:</label>
+                                            <input type="email" class="guest-email" placeholder="ivan@mail.com" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div>
+                                            <label>Дата заезда:</label>
+                                            <input type="date" class="check-in" required>
+                                        </div>
+                                        <div>
+                                            <label>Дата выезда:</label>
+                                            <input type="date" class="check-out" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div>
+                                            <label>Количество номеров:</label>
+                                            <input type="number" class="num-rooms" value="1" min="1" required>
+                                        </div>
+                                        <div>
+                                            <label>Валюта:</label>
+                                            <select class="currency">
+                                                <option value="usd">USD ($)</option>
+                                                <option value="kzt">KZT (₸)</option>
+                                                <option value="rub">RUB (₽)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-submit-row">
+                                        <button type="submit" class="book-btn">Забронировать</button>
+                                        <button type="button" class="cancel-btn" onclick="toggleHotelForm(this)">Отмена</button>
+                                    </div>
+                                </form>
+                                <div class="booking-result"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Переключение между вкладками
+        function switchTab(tabName) {
+            // Скрываем все вкладки
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // Убираем активность у всех кнопок
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Показываем нужную вкладку
+            document.getElementById(tabName).classList.add('active');
+            // Активируем нужную кнопку
+            event.target.classList.add('active');
+        }
+
+        // Раскрытие/закрытие формы отеля
+        function toggleHotelForm(btn, hotelName = null, price = null) {
+            const card = btn.closest('.hotel-booking-card');
+            const formSection = card.querySelector('.hotel-form-section');
+            formSection.classList.toggle('show');
+
+            // Если это раскрытие, прикрепляем данные отеля
+            if (formSection.classList.contains('show')) {
+                const form = formSection.querySelector('.hotel-booking-form');
+                form.dataset.hotelName = hotelName;
+                form.dataset.price = price;
+            }
+        }
+
+        // Обработчик отправки форм отелей
+        document.querySelectorAll('.hotel-booking-form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const hotelName = this.dataset.hotelName;
+                const basePrice = parseFloat(this.dataset.price);
+                const guestName = this.querySelector('.guest-name').value;
+                const email = this.querySelector('.guest-email').value;
+                const checkIn = this.querySelector('.check-in').value;
+                const checkOut = this.querySelector('.check-out').value;
+                const numRooms = parseInt(this.querySelector('.num-rooms').value);
+                const currency = this.querySelector('.currency').value;
+
+                if (!guestName || !email || !checkIn || !checkOut) {
+                    alert('Пожалуйста, заполните все поля');
+                    return;
+                }
+
+                // Расчет количества ночей
+                const start = new Date(checkIn);
+                const end = new Date(checkOut);
+                const nights = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+
+                if (nights <= 0) {
+                    alert('Дата выезда должна быть позже даты заезда');
+                    return;
+                }
+
+                // Расчет стоимости
+                const rates = {
+                    usd: 1,
+                    kzt: 430,
+                    rub: 95
+                };
+
+                const totalPrice = Math.round(basePrice * nights * numRooms * rates[currency]);
+                const currencySymbol = { usd: '$', kzt: '₸', rub: '₽' }[currency];
+
+                // Отображение результата
+                const resultDiv = this.closest('.hotel-form-section').querySelector('.booking-result');
+                resultDiv.innerHTML = `
+                    <strong>✅ Успешно!</strong><br>
+                    Отель: ${hotelName}<br>
+                    Гость: ${guestName}<br>
+                    Даты: ${checkIn} - ${checkOut} (${nights} ночей)<br>
+                    Номеров: ${numRooms}<br>
+                    <strong style="font-size: 18px;">Итого: ${totalPrice}${currencySymbol}</strong><br>
+                    Письмо отправлено на ${email}
+                `;
+                resultDiv.classList.add('show');
+
+                // Закрытие формы через 2 секунды
+                setTimeout(() => {
+                    this.closest('.hotel-form-section').classList.remove('show');
+                    resultDiv.classList.remove('show');
+                }, 2500);
+            });
+        });
+    </script>
+</body>
+</html>

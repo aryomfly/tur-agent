@@ -1,0 +1,589 @@
+/* ОБЩИЕ СТИЛИ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Плавная прокрутка к якорям */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ШАПКА */
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #007bff;
+    text-transform: uppercase;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-list li {
+    position: relative;
+    margin-left: 25px;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.nav-list a:hover {
+    color: #007bff;
+}
+
+/* ВЫПАДАЮЩЕЕ МЕНЮ */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    border-radius: 5px;
+    padding: 10px 0;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px 20px;
+    text-transform: none;
+    color: #555;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    color: #007bff;
+}
+
+/* Показываем меню при наведении на li с классом dropdown */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.arrow {
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+/* ГЛАВНЫЙ БАННЕР (HERO) */
+.hero {
+    height: 600px;
+    background: url('https://source.unsplash.com/1600x900/?beach,travel') no-repeat center center/cover;
+    position: relative;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.4); /* Затемнение */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.main-btn {
+    padding: 15px 40px;
+    background-color: #ffd700;
+    color: #333;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.main-btn:hover {
+    background-color: #ffea00;
+    transform: scale(1.05);
+}
+
+/* СЕКЦИИ */
+.section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+.bg-light {
+    background-color: #eef2f5;
+}
+
+/* КАРТОЧКИ */
+.cards-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    width: 350px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.buy-btn {
+    margin-top: 15px;
+    padding: 10px 25px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.buy-btn:hover {
+    background-color: #0056b3;
+}
+
+/* РАЗДЕЛИТЕЛЬ О НАС/КОМПАНИИ */
+.split-section {
+    display: flex;
+    gap: 50px;
+}
+
+.text-block {
+    flex: 1;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* ФУТЕР */
+footer {
+    background-color: #222;
+    color: #ddd;
+    padding: 50px 0 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid #444;
+    padding-top: 20px;
+    font-size: 14px;
+}
+
+/* МОДАЛЬНОЕ ОКНО (СТИЛИ) */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    animation: fadeIn 0.4s;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 40px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+/* Форма в модальном окне */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group select, 
+.form-group input[type="date"],
+.form-group input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #28a745;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* Стили для бронирования */
+.booking-section {
+    padding: 60px 0;
+}
+.booking-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+}
+.booking-form .form-group {
+    margin-bottom: 18px;
+}
+.booking-form label { font-weight: 700; margin-bottom: 8px; display: block; }
+.booking-form input[type="email"],
+.booking-form input[type="date"],
+.booking-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+#bookingResult {
+    display: none;
+    margin-top: 15px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: #e9f7ef;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* ВАЛЮТЫ */
+.currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.currency-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    text-align: center;
+    border-left: 4px solid #007bff;
+}
+
+.currency-card h3 {
+    color: #007bff;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.exchange-rate {
+    font-size: 16px;
+    margin: 10px 0;
+    font-weight: 600;
+}
+
+.currency-card small {
+    color: #999;
+    display: block;
+    margin-top: 10px;
+}
+
+/* ОТЕЛИ */
+.hotels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.hotel-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.hotel-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.hotel-img {
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+}
+
+.hotel-info {
+    padding: 20px;
+}
+
+.hotel-info h3 {
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.hotel-location {
+    color: #007bff;
+    font-weight: 600;
+    margin: 8px 0;
+}
+
+.hotel-price {
+    font-size: 24px;
+    color: #28a745;
+    font-weight: 700;
+    margin: 10px 0 5px;
+}
+
+.hotel-price-alt {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.book-hotel-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.book-hotel-btn:hover {
+    background-color: #0056b3;
+}
+
+/* САМОЛЕТЫ */
+.flights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.flight-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+}
+
+.flight-card:hover {
+    transform: translateY(-8px);
+}
+
+.flight-header {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    padding: 20px;
+    color: white;
+}
+
+.flight-route {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-weight: 600;
+    flex-wrap: wrap;
+}
+
+.flight-route .city {
+    background: rgba(255,255,255,0.2);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.arrow-flight {
+    font-size: 20px;
+    animation: slideArrow 1s infinite;
+}
+
+@keyframes slideArrow {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+}
+
+.flight-details {
+    padding: 20px;
+}
+
+.flight-details p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.flight-details strong {
+    color: #333;
+}
+
+.flight-price {
+    font-size: 22px;
+    color: #28a745;
+    font-weight: 700;
+    margin-top: 10px !important;
+}
+
+.flight-price-alt {
+    font-size: 13px;
+    color: #999;
+}
+
+.book-flight-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.book-flight-btn:hover {
+    background-color: #218838;
+}
+
+/* Адаптив для телефонов */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+    }
+    .nav-list {
+        flex-direction: column;
+        margin-top: 15px;
+    }
+    .nav-list li {
+        margin: 10px 0;
+    }
+    .split-section {
+        flex-direction: column;
+    }
+    
+    .currency-grid,
+    .hotels-grid,
+    .flights-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .flight-route {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

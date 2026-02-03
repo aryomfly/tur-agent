@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бали — Тур | Go&Fly</title>
+    <link rel="stylesheet" href="../aga/style.css">
+    <style>
+        .tour-hero {
+            background: url('../aga/Bali.jpg') center/cover no-repeat;
+            height: 500px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tour-content {
+            background: white;
+            border-radius: 15px;
+            padding: 50px;
+            max-width: 900px;
+            margin: -60px 20px 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .tour-content h2 {
+            color: #007bff;
+            font-size: 32px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 15px;
+        }
+
+        .tour-content p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .tour-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0;
+        }
+
+        .tour-content li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #666;
+            font-size: 16px;
+        }
+
+        .tour-content li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .tour-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tour-buttons a {
+            padding: 15px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-book {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-book:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(40,167,69,0.3);
+        }
+
+        .btn-home {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-home:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0,123,255,0.3);
+        }
+
+        .header-tour {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .header-tour .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-tour {
+            font-size: 24px;
+            font-weight: 700;
+            color: #007bff;
+        }
+
+        .nav-tour a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-tour a:hover {
+            color: #007bff;
+        }
+
+        @media (max-width: 768px) {
+            .tour-content {
+                padding: 30px 20px;
+                margin: -40px 10px 0;
+            }
+
+            .tour-content h2 {
+                font-size: 24px;
+            }
+
+            .tour-buttons {
+                flex-direction: column;
+            }
+
+            .tour-buttons a {
+                width: 100%;
+                text-align: center;
+            }
+
+            .tour-hero {
+                height: 300px;
+            }
+
+            .header-tour .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header-tour">
+        <div class="container">
+            <div class="logo-tour">Go&Fly ✈️</div>
+            <nav class="nav-tour">
+                <a href="index.html">← На главную</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="tour-hero">
+        <div class="hero-overlay"></div>
+    </section>
+
+    <section class="section" style="padding: 0 0 60px;">
+        <div class="container">
+            <div class="tour-content">
+                <h2>🏝️ Бали — рай на земле</h2>
+                <p style="font-style: italic; color: #007bff; margin-bottom: 20px;">Белые пляжи, рисовые террасы и расслабляющая атмосфера для восстановления сил.</p>
+                
+                <h3 style="color: #333; margin-top: 30px; margin-bottom: 15px;">🌴 Что вас ждёт</h3>
+                <p>Серфинг на лучших пляжах, спа и йога, а также уникальные культурные мероприятия. Бали — идеальное место для отдыха тела и души.</p>
+                
+                <h3 style="color: #333; margin-top: 25px; margin-bottom: 15px;">🎯 Включено в тур:</h3>
+                <ul>
+                    <li>Сёрф-школы и доступ на лучшие пляжи</li>
+                    <li>Спа-процедуры и сеансы йоги</li>
+                    <li>Экскурсии и посещение храмов</li>
+                    <li>Гастрономические туры и местная кухня</li>
+                    <li>Комфортное проживание в курортных отелях</li>
+                </ul>
+
+                <div class="tour-buttons">
+                    <a class="btn-book" href="bron.html">Забронировать тур</a>
+                    <a class="btn-home" href="index.html">На главную</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
