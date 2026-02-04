@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Admin - Управление текстом</title>
+	<style>
+		/* минимальные стили для читаемой админки */
+		body { font-family: Arial, sans-serif; background:#f6f7fb; color:#222; padding:24px; }
+		.container{ max-width:920px; margin:0 auto; background:#fff; padding:18px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,.06); }
+		h1{ margin-top:0 }
+		.row{ display:flex; gap:12px; flex-wrap:wrap }
+		.field{ flex:1 1 280px; display:flex; flex-direction:column; margin-bottom:12px }
+		label{ font-size:13px; margin-bottom:6px; color:#333 }
+		input[type="text"], textarea{ padding:8px; font-size:14px; border:1px solid #d0d6dd; border-radius:6px; }
+		textarea{ min-height:70px; resize:vertical }
+		.controls{ display:flex; gap:8px; margin-top:12px; align-items:center }
+		button{ padding:10px 14px; border-radius:6px; border:0; cursor:pointer }
+		.btn-save{ background:#0078d4; color:#fff }
+		.btn-reset{ background:#f0f0f0 }
+		.btn-open{ background:#22a55f; color:#fff }
+		.note{ font-size:13px; color:#666; margin-bottom:12px }
+		.small{ font-size:13px; color:#666; }
+		.success{ color:#0b6; margin-left:8px }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Админка — редактирование текстов сайта</h1>
+		<p class="note">Без предпросмотра. При сохранении данные применяются на сайте (через localStorage). HTML-теги автоматически удаляются.</p>
+
+		<form id="adminForm">
+			<div class="row">
+				<div class="field"><label>Логотип (logo)</label><input type="text" name="logo" id="logo"></div>
+				<div class="field"><label>Главный текст / hero.title</label><input type="text" name="hero.title" id="hero.title"></div>
+				<div class="field"><label>Подзаголовок / hero.subtitle</label><input type="text" name="hero.subtitle" id="hero.subtitle"></div>
+				<div class="field"><label>Кнопка CTA / hero.cta</label><input type="text" name="hero.cta" id="hero.cta"></div>
+
+				<!-- Навигация -->
+				<div class="field"><label>nav.tours</label><input type="text" name="nav.tours" id="nav.tours"></div>
+				<div class="field"><label>nav.currency</label><input type="text" name="nav.currency" id="nav.currency"></div>
+				<div class="field"><label>nav.hotels</label><input type="text" name="nav.hotels" id="nav.hotels"></div>
+				<div class="field"><label>nav.flights</label><input type="text" name="nav.flights" id="nav.flights"></div>
+				<div class="field"><label>nav.clients</label><input type="text" name="nav.clients" id="nav.clients"></div>
+				<div class="field"><label>nav.contact</label><input type="text" name="nav.contact" id="nav.contact"></div>
+
+				<!-- Разделы -->
+				<div class="field"><label>tours.title</label><input type="text" name="tours.title" id="tours.title"></div>
+				<div class="field"><label>tour1.title</label><input type="text" name="tour1.title" id="tour1.title"></div>
+				<div class="field"><label>tour1.desc</label><input type="text" name="tour1.desc" id="tour1.desc"></div>
+				<div class="field"><label>tour2.title</label><input type="text" name="tour2.title" id="tour2.title"></div>
+				<div class="field"><label>tour2.desc</label><input type="text" name="tour2.desc" id="tour2.desc"></div>
+				<div class="field"><label>tour3.title</label><input type="text" name="tour3.title" id="tour3.title"></div>
+				<div class="field"><label>tour3.desc</label><input type="text" name="tour3.desc" id="tour3.desc"></div>
+
+				<div class="field"><label>hotTours.title</label><input type="text" name="hotTours.title" id="hotTours.title"></div>
+				<div class="field"><label>hotTours.note</label><input type="text" name="hotTours.note" id="hotTours.note"></div>
+
+				<div class="field"><label>currency.title</label><input type="text" name="currency.title" id="currency.title"></div>
+				<div class="field"><label>usd.rate</label><input type="text" name="usd.rate" id="usd.rate"></div>
+				<div class="field"><label>usd.rub</label><input type="text" name="usd.rub" id="usd.rub"></div>
+
+				<div class="field"><label>hotels.title</label><input type="text" name="hotels.title" id="hotels.title"></div>
+				<div class="field"><label>hotel1.name</label><input type="text" name="hotel1.name" id="hotel1.name"></div>
+				<div class="field"><label>hotel2.name</label><input type="text" name="hotel2.name" id="hotel2.name"></div>
+				<div class="field"><label>hotel3.name</label><input type="text" name="hotel3.name" id="hotel3.name"></div>
+				<div class="field"><label>hotel4.name</label><input type="text" name="hotel4.name" id="hotel4.name"></div>
+
+				<div class="field"><label>about.title</label><input type="text" name="about.title" id="about.title"></div>
+				<div class="field" style="flex-basis:100%"><label>about.text</label><textarea name="about.text" id="about.text"></textarea></div>
+
+				<div class="field"><label>company.title</label><input type="text" name="company.title" id="company.title"></div>
+				<div class="field" style="flex-basis:100%"><label>company.text</label><textarea name="company.text" id="company.text"></textarea></div>
+
+				<div class="field"><label>footer.name</label><input type="text" name="footer.name" id="footer.name"></div>
+				<div class="field"><label>footer.addr</label><input type="text" name="footer.addr" id="footer.addr"></div>
+				<div class="field"><label>footer.phone</label><input type="text" name="footer.phone" id="footer.phone"></div>
+				<div class="field"><label>footer.email</label><input type="text" name="footer.email" id="footer.email"></div>
+
+				<!-- Изображения -->
+				<div style="flex-basis:100%; margin-top:8px;"><strong>Изображения (пути или URL)</strong></div>
+				<div class="field"><label>hero.bg</label><input type="text" name="hero.bg" id="hero.bg" placeholder="./image/bj_1.jpg"></div>
+				<div class="field"><label>tour1.image</label><input type="text" name="tour1.image" id="tour1.image" placeholder="./image/paris.jpg"></div>
+				<div class="field"><label>tour2.image</label><input type="text" name="tour2.image" id="tour2.image" placeholder="./image/Bali.jpg"></div>
+				<div class="field"><label>tour3.image</label><input type="text" name="tour3.image" id="tour3.image" placeholder="./image/Dubai.jpg"></div>
+
+				<div class="field"><label>hotel1.image</label><input type="text" name="hotel1.image" id="hotel1.image" placeholder="./image/hotel_1.jpg"></div>
+				<div class="field"><label>hotel2.image</label><input type="text" name="hotel2.image" id="hotel2.image" placeholder="./image/hotel_2.jpg"></div>
+				<div class="field"><label>hotel3.image</label><input type="text" name="hotel3.image" id="hotel3.image" placeholder="./image/hotel_3.jpg"></div>
+				<div class="field"><label>hotel4.image</label><input type="text" name="hotel4.image" id="hotel4.image" placeholder="./image/hotel_4.jpg"></div>
+			</div>
+
+			<div class="controls">
+				<button type="button" class="btn-save" id="saveBtn">Сохранить</button>
+				<button type="button" class="btn-reset" id="resetBtn">Сбросить по-умолчанию</button>
+				<button type="button" class="btn-open" id="openSiteBtn">Сохранить и перейти на сайт</button>
+				<span id="msg" class="small"></span>
+			</div>
+		</form>
+
+		<p class="small" style="margin-top:12px">Главный текст (пример): <strong>Твой идеальный отдых</strong></p>
+	</div>
+
+	<script>
+		// default values (включая главный текст "Твой идеальный отдых")
+		const defaultContent = {
+			"logo":"Go&Fly ✈️",
+			"nav.tours":"Туры",
+			"nav.currency":"Валюты",
+			"nav.hotels":"Отели",
+			"nav.flights":"Самолеты",
+			"nav.clients":"Для клиентов",
+			"nav.contact":"Контакты",
+			"hero.title":"Твой идеальный отдых",
+			"hero.subtitle":"Мы найдем для вас идеальное место под солнцем",
+			"hero.cta":"Подобрать нужную путевку",
+			"tours.title":"Популярные направления",
+			"tour1.title":"Париж, Франция",
+			"tour1.desc":"Романтический уикенд.",
+			"tour2.title":"Бали, Индонезия",
+			"tour2.desc":"Серфинг и релакс.",
+			"tour3.title":"Дубай, ОАЭ",
+			"tour3.desc":"Роскошь пустыни.",
+			"hotTours.title":"Горячее предложения 🔥",
+			"hotTours.note":"Только сегодня, если купить билет, от 115 тысяч тенге, в подарок булочка в любом аэропорту",
+			"currency.title":"Курсы валют 💱",
+			"usd.rate":"430",
+			"usd.rub":"95",
+			"hotels.title":"Лучшие цены на отели 🏨",
+			"hotel1.name":"Paradise Resort ★★★★★",
+			"hotel2.name":"Bali Sunset ★★★★",
+			"hotel3.name":"Paris Elegance ★★★★",
+			"hotel4.name":"Dubai Luxury ★★★★★",
+			"about.title":"О нас",
+			"about.text":"Мы — команда энтузиастов, посетивших более 50 стран. Мы знаем не только популярные маршруты, но и секретные уголки планеты.",
+			"company.title":"О компании",
+			"company.text":"Go&Fly работает с 2010 года. За это время мы отправили на отдых более 15 000 счастливых туристов. Мы работаем только с проверенными туроператорами.",
+			"footer.name":"Go&Fly Agency",
+			"footer.addr":"Москва, ул. Пушкина, д. 10",
+			"footer.phone":"+7 (999) 000-00-00",
+			"footer.email":"info@gofly.com",
+
+			/* Изображения по умолчанию */
+			"hero.bg":"./image/bj_1.jpg",
+			"tour1.image":"./image/paris.jpg",
+			"tour2.image":"./image/Bali.jpg",
+			"tour3.image":"./image/Dubai.jpg",
+			"hotel1.image":"./image/hotel_1.jpg",
+			"hotel2.image":"./image/hotel_2.jpg",
+			"hotel3.image":"./image/hotel_3.jpg",
+			"hotel4.image":"./image/hotel_4.jpg"
+		};
+
+		// удалить HTML теги
+		function stripTags(str){
+			if(!str) return "";
+			return String(str).replace(/<[^>]*>/g,"");
+		}
+
+		function loadForm(){
+			const saved = JSON.parse(localStorage.getItem('siteContent') || '{}');
+			const keys = Object.keys(defaultContent);
+			keys.forEach(k=>{
+				const el = document.getElementById(k);
+				if(!el) return;
+				el.value = saved[k] !== undefined ? saved[k] : defaultContent[k];
+			});
+		}
+
+		function saveForm(){
+			const keys = Object.keys(defaultContent);
+			const out = {};
+			keys.forEach(k=>{
+				const el = document.getElementById(k);
+				if(!el) return;
+				out[k] = stripTags(el.value).trim();
+			});
+			localStorage.setItem('siteContent', JSON.stringify(out));
+			showMsg('Сохранено');
+		}
+
+		function resetDefaults(){
+			if(!confirm('Сбросить все поля на значения по-умолчанию?')) return;
+			localStorage.removeItem('siteContent');
+			loadForm();
+			showMsg('Сброшено до значений по-умолчанию');
+		}
+
+		function showMsg(text){
+			const msg = document.getElementById('msg');
+			msg.textContent = text;
+			setTimeout(()=>{ msg.textContent = ''; }, 2500);
+		}
+
+		document.getElementById('saveBtn').addEventListener('click', ()=>{
+			saveForm();
+		});
+		document.getElementById('resetBtn').addEventListener('click', resetDefaults);
+		document.getElementById('openSiteBtn').addEventListener('click', ()=>{
+			saveForm();
+			// открыть сайт в новой вкладке
+			window.open('index.html', '_blank');
+		});
+
+		// init
+		loadForm();
+	</script>
+</body>
+</html>

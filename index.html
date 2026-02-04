@@ -8,55 +8,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- CAPTCHA VERIFICATION MODAL -->
-    <div id="captchaModal" class="captcha-modal">
-        <div class="captcha-modal-content">
-            <div class="captcha-header">
-                <h2>Проверка безопасности</h2>
-                <p>Пожалуйста, подтвердите, что вы не робот</p>
-            </div>
-            <div class="captcha-body">
-                <div class="captcha-checkbox">
-                    <input type="checkbox" id="captchaCheckbox" class="captcha-input">
-                    <label for="captchaCheckbox">
-                        <span>Я не робот</span>
-                        <small>reCAPTCHA</small>
-                    </label>
-                </div>
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ctext x='5' y='20' font-size='14' fill='%23666'%3EGoogle%3C/text%3E%3C/svg%3E" alt="reCAPTCHA" class="captcha-logo">
-            </div>
-            <div class="captcha-footer">
-                <p class="captcha-text">
-                    This site is protected by reCAPTCHA and the Google
-                    <a href="#">Privacy Policy</a> and
-                    <a href="#">Terms of Service</a> apply.
-                </p>
-            </div>
-            <button id="captchaSubmit" class="captcha-btn">Продолжить</button>
+
+    <div class="top-links">
+        <div class="container top-links-container">
+            <div class="top-col left"><a href="#about-us">О нас</a></div>
+            <div class="top-col right"><a href="#company">О компании</a></div>
         </div>
     </div>
 
-    <header>
+    <header> 
         <div class="container header-container">
-            <div class="logo">Go&Fly ✈️</div>
+            <div class="logo" data-edit="logo">Go&Fly ✈️</div>
             
             <nav>
                 <ul class="nav-list">
-                    <li><a href="#tours">Туры</a></li>
-                    <li><a href="#currency">Валюты</a></li>
-                    <li><a href="#hotels">Отели</a></li>
-                    <li><a href="#flights">Самолеты</a></li>
+                    <li><a href="#tours" data-edit="nav.tours">Туры</a></li>
+                    <li><a href="#currency" data-edit="nav.currency">Валюты</a></li>
+                    <li><a href="#hotels" data-edit="nav.hotels">Отели</a></li>
+                    <li><a href="#flights" data-edit="nav.flights">Самолеты</a></li>
                     <li class="dropdown">
-                        <a href="#clients" class="dropbtn">Для клиентов <span class="arrow">▼</span></a>
+                        <a href="#clients" class="dropbtn" data-edit="nav.clients">Для клиентов <span class="arrow">▼</span></a>
                         <div class="dropdown-content">
                             <a href="./html/visas.html">Визы и документы</a>
                             <a href="./html/insurance.html">Страхование</a>
                             <a href="./html/memo.html">Памятка туриста</a>
                         </div>
                     </li>
-                    <li><a href="#about-us">О нас</a></li>
-                    <li><a href="#company">О компании</a></li>
-                    <li><a href="#contact">Контакты</a></li>
+                    <li><a href="#contact" data-edit="nav.contact">Контакты</a></li>
                     <li>
                         <button class="theme-toggle" id="themeToggle" title="Переключить тему">
                             <span class="theme-icon sun">☀️</span>
@@ -68,41 +46,44 @@
         </div>
     </header>
 
-    <section class="hero" style="background: url('./image/bj_1.jpg') center/cover no-repeat;">
+    <section class="hero" data-image="hero.bg" style="background: url('./image/bj_1.jpg') center/cover no-repeat;">
         <div class="hero-overlay">
             <div class="hero-content">
-                <h1>Путешествия, которые меняют жизнь</h1>
-                <p>Мы найдем для вас идеальное место под солнцем</p>
-                <button id="openQuizBtn" class="main-btn">Подобрать нужную путевку</button>
+                <h1 data-edit="hero.title">Путешествия, которые меняют жизнь</h1>
+                <p data-edit="hero.subtitle">Мы найдем для вас идеальное место под солнцем</p>
+                <button id="openQuizBtn" class="main-btn" data-edit="hero.cta">Подобрать нужную путевку</button>
             </div>
         </div>
     </section>
 
     <section id="tours" class="section">
         <div class="container">
-            <h2 class="section-title">Популярные направления</h2>
+            <h2 class="section-title" data-edit="tours.title">Популярные направления</h2>
             <div class="cards-grid">
                 <div class="card">
-                    <div class="card-img" style="background-image: url('./image/paris.jpg');"></div>
+                    <div class="card-img" data-image="tour1.image" style="background-image: url('./image/paris.jpg');"></div>
                     <div class="card-info">
-                        <h3>Париж, Франция</h3>
-                        <p>Романтический уикенд.</p>
+                        <h3 data-edit="tour1.title">Париж, Франция</h3>
+                        <p data-edit="tour1.desc">Романтический уикенд.</p>
+                        <br>
                         <a class="buy-btn" href="html/paris-tour.html">Подробнее</a>
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-img" style="background-image: url('./image/Bali.jpg');"></div>
+                    <div class="card-img" data-image="tour2.image" style="background-image: url('./image/Bali.jpg');"></div>
                     <div class="card-info">
-                        <h3>Бали, Индонезия</h3>
-                        <p>Серфинг и релакс.</p>
+                        <h3 data-edit="tour2.title">Бали, Индонезия</h3>
+                        <p data-edit="tour2.desc">Серфинг и релакс.</p>
+                        <br>
                         <a class="buy-btn" href="html/bali-tour.html">Подробнее</a>
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-img" style="background-image: url('./image/Dubai.jpg');"></div>
+                    <div class="card-img" data-image="tour3.image" style="background-image: url('./image/Dubai.jpg');"></div>
                     <div class="card-info">
-                        <h3>Дубай, ОАЭ</h3>
-                        <p>Роскошь пустыни.</p>
+                        <h3 data-edit="tour3.title">Дубай, ОАЭ</h3>
+                        <p data-edit="tour3.desc">Роскошь пустыни.</p>
+                        <br>
                         <a class="buy-btn" href="html/dubai-tour.html">Подробнее</a>
                     </div>
                 </div>
@@ -112,20 +93,20 @@
 
     <section id="hot-tours" class="section bg-light">
         <div class="container">
-            <h2 class="section-title">Горячее предложения 🔥</h2>
-            <p style="text-align: center;">Только сегодня, если купить билет, от 115 тысяч тенге, в подарок булочка в любом аэропорту</p>
+            <h2 class="section-title" data-edit="hotTours.title">Горячее предложения 🔥</h2>
+            <p style="text-align: center;" data-edit="hotTours.note">Только сегодня, если купить билет, от 115 тысяч тенге, в подарок булочка в любом аэропорту</p>
         </div>
     </section>
 
     <!-- КУРСЫ ВАЛЮТ -->
     <section id="currency" class="section">
         <div class="container">
-            <h2 class="section-title">Курсы валют 💱</h2>
+            <h2 class="section-title" data-edit="currency.title">Курсы валют 💱</h2>
             <div class="currency-grid">
                 <div class="currency-card">
                     <h3>USD (Доллар)</h3>
-                    <p class="exchange-rate">1 USD = <span id="usd-rate">430</span> ₸</p>
-                    <p class="exchange-rate">1 USD = <span id="usd-rub">95</span> ₽</p>
+                    <p class="exchange-rate">1 USD = <span id="usd-rate" data-edit="usd.rate">430</span> ₸</p>
+                    <p class="exchange-rate">1 USD = <span id="usd-rub" data-edit="usd.rub">95</span> ₽</p>
                     <small>Обновлено: <span id="currency-time">сейчас</span></small>
                 </div>
                 <div class="currency-card">
@@ -147,12 +128,12 @@
     <!-- ЦЕНЫ НА ОТЕЛИ -->
     <section id="hotels" class="section bg-light">
         <div class="container">
-            <h2 class="section-title">Лучшие цены на отели 🏨</h2>
+            <h2 class="section-title" data-edit="hotels.title">Лучшие цены на отели 🏨</h2>
             <div class="hotels-grid">
                 <div class="hotel-card">
-                    <div class="hotel-img" style="background-image: url('./image/hotel_1.jpg');"></div>
+                    <div class="hotel-img" data-image="hotel1.image" style="background-image: url('./image/hotel_1.jpg');"></div>
                     <div class="hotel-info">
-                        <h3>Paradise Resort ★★★★★</h3>
+                        <h3 data-edit="hotel1.name">Paradise Resort ★★★★★</h3>
                         <p class="hotel-location">📍 Мальдивы</p>
                         <p class="hotel-price">$299 / ночь</p>
                         <p class="hotel-price-alt">28,570 ₸ / ночь</p>
@@ -160,9 +141,9 @@
                     </div>
                 </div>
                 <div class="hotel-card">
-                    <div class="hotel-img" style="background-image: url('./image/hotel_2.jpg');"></div>
+                    <div class="hotel-img" data-image="hotel2.image" style="background-image: url('./image/hotel_2.jpg');"></div>
                     <div class="hotel-info">
-                        <h3>Bali Sunset ★★★★</h3>
+                        <h3 data-edit="hotel2.name">Bali Sunset ★★★★</h3>
                         <p class="hotel-location">📍 Бали, Индонезия</p>
                         <p class="hotel-price">$89 / ночь</p>
                         <p class="hotel-price-alt">38,270 ₸ / ночь</p>
@@ -170,9 +151,9 @@
                     </div>
                 </div>
                 <div class="hotel-card">
-                    <div class="hotel-img" style="background-image: url('./image/hotel_3.jpg');"></div>
+                    <div class="hotel-img" data-image="hotel3.image" style="background-image: url('./image/hotel_3.jpg');"></div>
                     <div class="hotel-info">
-                        <h3>Paris Elegance ★★★★</h3>
+                        <h3 data-edit="hotel3.name">Paris Elegance ★★★★</h3>
                         <p class="hotel-location">📍 Париж, Франция</p>
                         <p class="hotel-price">$199 / ночь</p>
                         <p class="hotel-price-alt">85,570 ₸ / ночь</p>
@@ -180,9 +161,9 @@
                     </div>
                 </div>
                 <div class="hotel-card">
-                    <div class="hotel-img" style="background-image: url('./image/hotel_4.jpg');"></div>
+                    <div class="hotel-img" data-image="hotel4.image" style="background-image: url('./image/hotel_4.jpg');"></div>
                     <div class="hotel-info">
-                        <h3>Dubai Luxury ★★★★★</h3>
+                        <h3 data-edit="hotel4.name">Dubai Luxury ★★★★★</h3>
                         <p class="hotel-location">📍 Дубай, ОАЭ</p>
                         <p class="hotel-price">$449 / ночь</p>
                         <p class="hotel-price-alt">193,170 ₸ / ночь</p>
@@ -302,12 +283,12 @@
     <section id="about-us" class="section">
         <div class="container split-section">
             <div class="text-block">
-                <h2>О нас</h2>
-                <p>Мы — команда энтузиастов, посетивших более 50 стран. Мы знаем не только популярные маршруты, но и секретные уголки планеты.</p>
+                <h2 data-edit="about.title">О нас</h2>
+                <p data-edit="about.text">Мы — команда энтузиастов, посетивших более 50 стран. Мы знаем не только популярные маршруты, но и секретные уголки планеты.</p>
             </div>
             <div class="text-block" id="company">
-                <h2>О компании</h2>
-                <p>Go&Fly работает с 2010 года. За это время мы отправили на отдых более 15 000 счастливых туристов. Мы работаем только с проверенными туроператорами.</p>
+                <h2 data-edit="company.title">О компании</h2>
+                <p data-edit="company.text">Go&Fly работает с 2010 года. За это время мы отправили на отдых более 15 000 счастливых туристов. Мы работаем только с проверенными туроператорами.</p>
             </div>
         </div>
     </section>
@@ -315,13 +296,13 @@
     <footer id="contact">
         <div class="container footer-content">
             <div>
-                <h3>Go&Fly Agency</h3>
-                <p>Москва, ул. Пушкина, д. 10</p>
+                <h3 data-edit="footer.name">Go&Fly Agency</h3>
+                <p data-edit="footer.addr">Москва, ул. Пушкина, д. 10</p>
             </div>
             <div>
                 <h3>Связь</h3>
-                <p>+7 (999) 000-00-00</p>
-                <p>info@gofly.com</p>
+                <p data-edit="footer.phone">+7 (999) 000-00-00</p>
+                <p data-edit="footer.email">info@gofly.com</p>
             </div>
         </div>
         <div class="copyright">
@@ -333,6 +314,7 @@
         <div class="modal-content">
             <span class="close-btn">&times;</span>
             <h2>Подбор идеального тура 🌴</h2>
+            <div id="tourResults" style="display:none; margin-bottom:10px; padding:10px; border-radius:6px; background:#fffbe6; color:#665c00;"></div>
             <form id="tourForm">
                 <div class="form-group">
                     <label>Куда вы хотите полететь?</label>
@@ -465,6 +447,41 @@
             <div id="flightBookingResult" style="display: none; margin-top: 15px; padding: 12px; border-radius: 8px; background: #e9f7ef; color: #155724; border: 1px solid #c3e6cb;"></div>
         </div>
     </div>
+
+    <script>
+        // Применение сохранённых текстов и изображений (без рендеринга HTML-тегов)
+        document.addEventListener('DOMContentLoaded', function(){
+            try {
+                const saved = JSON.parse(localStorage.getItem('siteContent') || 'null');
+                if(!saved) return;
+
+                // Тексты (data-edit)
+                document.querySelectorAll('[data-edit]').forEach(el=>{
+                    const key = el.getAttribute('data-edit');
+                    if(key && saved[key] !== undefined){
+                        el.textContent = saved[key];
+                    }
+                });
+
+                // Изображения (data-image) — ставим в background-image или src
+                document.querySelectorAll('[data-image]').forEach(el=>{
+                    const key = el.getAttribute('data-image');
+                    if(!key) return;
+                    const val = saved[key];
+                    if(!val) return;
+                    // если элемент — img, используем src
+                    if(el.tagName.toLowerCase() === 'img'){
+                        el.src = val;
+                    } else {
+                        // background-image (вставляем как url(...))
+                        el.style.backgroundImage = `url("${val}")`;
+                    }
+                });
+            } catch(e){
+                console.warn('Ошибка при применении содержимого админки:', e);
+            }
+        });
+    </script>
 
     <script src="./js/script.js"></script>
 </body>
